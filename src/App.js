@@ -1,29 +1,33 @@
 import React from 'react';
 import Box from './composition/Box';
-import Card from './composition/Card'
 import './App.css';
-import STORE from './composition/STORE'
-// import List from './composition/List'
+import Tooltip from './composition/Tooltip'
 
+const firstTooltip = (
+  <Tooltip color='hotpink' message='tooltip message'>
+   ipsum
+  </Tooltip>
+)
+const secondTooltip = (
+  <Tooltip color='#126BCC' message='another tooltip message'>
+    officiis
+  </Tooltip>
+)
 
 
 function App() {
   return (
     <main className='App'>
       <Box className='left' flexBasis={1}>
-        <h2>{STORE.lists[0].header}</h2>
-      <Card>
-      <h3></h3>
-      <p>The description of the card</p>
-      <button className='delete'>Delete</button>
-      </Card>
+        This is the {firstTooltip} on the left <Tooltip message='one more tooltip message'>
+          box.
+        </Tooltip>
       </Box>
-      <Box className='right' name='Untitled Card'>
-        This is the content children from the RIGHT box.
-      
+
+      <Box className='right'>
+        This is the content {secondTooltip} from the RIGHT box.
       </Box>
-      
-    
+  
     </main>
   );
 }
